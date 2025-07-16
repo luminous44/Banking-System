@@ -52,5 +52,10 @@ public class AccountController {
     public ResponseEntity<?> deleteAccountById(@PathVariable Long id) {
         return accountService.deleteAccountById(id);
     }
+    @PutMapping("/{sId}/{rId}/sendMoney")
+    public ResponseEntity<?> sendMoney(@PathVariable Long sId, @PathVariable Long rId, @RequestBody Map<String,Double> request){
+        double amount = request.get("amount");
+        return accountService.sendMoney(sId,rId,amount);
+    }
 
 }

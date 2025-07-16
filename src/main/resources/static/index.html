@@ -91,6 +91,20 @@
               class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Withdraw</button>
     </form>
   </section>
+  <!--send money-->
+  <section class="mb-6 bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">Send Money</h2>
+    <form id="sendMoney" class="space-y-4">
+      <input type="number" name="id" placeholder="Sender ID"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <input type="number" name="id" placeholder="receiver ID"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <input type="number" name="balance" placeholder="Amount to Send"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <button type="submit"
+              class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Send</button>
+    </form>
+  </section>
 </div>
 <script src="script.js"></script>
 </body>

@@ -18,4 +18,8 @@ public interface AccountService {
     ResponseEntity<?> withdrawAmount(Long id, double amount);
 
     ResponseEntity<?> updateUser(Long id, String name);
+
+    ResponseEntity<?> sendMoney(Long senderId, Long receiverId, Double amount);
+
+
 }

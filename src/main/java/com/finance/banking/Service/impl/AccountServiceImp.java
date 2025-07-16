@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -99,6 +100,33 @@ public  class AccountServiceImp implements AccountService {
         acc.setAccountHolderName(name);
         accountRepository.save(acc);
         return ResponseEntity.ok("Updated name successfully");
+    }
+    @Transactional
+    @Override
+    public ResponseEntity<?> sendMoney(Long senderId, Long receiverId, Double amount) {
+
+        Optional<Account> sender = accountRepository.findById(senderId);
+        Optional<Account> receiver = accountRepository.findById(receiverId);
+        if (sender.isEmpty() || receiver.isEmpty() || sender.equals(receiver)){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Invalid Account Information");
+        }
+        Account senderAcc = sender.get();
+        Account receiverAcc = receiver.get();
+        if(senderAcc.getBalance() < amount){
+            return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
+                    .body("Insufficient amount !! Try again...");
+
+        }
+        double senderNewBalance = senderAcc.getBalance() - amount;
+        double receiverNewBalance = receiverAcc.getBalance() + amount;
+        senderAcc.setBalance(senderNewBalance);
+        receiverAcc.setBalance(receiverNewBalance);
+        accountRepository.save(senderAcc);
+        accountRepository.save(receiverAcc);
+
+        return ResponseEntity.ok(senderAcc.getAccountHolderName()+" Amount Transfer successfully to "+receiverAcc.getAccountHolderName());
+
     }
 
 
