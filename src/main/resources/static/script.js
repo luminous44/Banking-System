@@ -135,5 +135,25 @@ document.getElementById('withdrawForm').addEventListener('submit', function (e) 
         .catch(() => alert('Error withdrawing amount'));
 });
 
+document.getElementById('sendMoney').addEventListener('submit',function(e){
+ e.preventDefault();
+ const form = e.target;
+ const senderId = form.sender.value;
+ const receiverId = form.receiver.value;
+ const amount = parseFloat(form.amount.value);
+ const data = { amount: amount}
+ fetch(`${BASE_URL}/{senderId}/{receiverId}/sendMoney`,{
+  method: 'PUT'
+  headers: {'Content-type': 'application/json'},
+  body : JSON.stringify(data)
+ })
+ .then(res =>){
+ if(!res.ok) throw new Error();
+  alert('Balance transfer successful!');
+  getAccounts();
+ }
+ .catch(() => alert('Failed to transfer amount!! Try again'));
+});
+
 // Initial load
 getAccounts();
