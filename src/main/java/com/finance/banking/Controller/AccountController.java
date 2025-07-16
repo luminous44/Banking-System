@@ -23,17 +23,17 @@ public class AccountController {
     }
     @PutMapping("/{id}/deposit")
     public ResponseEntity<?> depositAmount(@PathVariable Long id, @RequestBody Map<String, Double> request){
-        double amount = request.get("amount");
+        double amount = request.get("balance");
         return accountService.depositAmount(id, amount);
     }
     @PutMapping("/{id}/withdraw")
     public ResponseEntity<?> withdrawAmount(@PathVariable Long id, @RequestBody Map<String, Double> request){
-        double amount = request.get("amount");
+        double amount = request.get("balance");
         return accountService.withdrawAmount(id, amount);
     }
     @PutMapping("/{id}/update")
     public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody Map<String, String> request){
-        String name = request.get("name");
+        String name = request.get("accountHolderName");
         return accountService.updateUser(id, name);
     }
 

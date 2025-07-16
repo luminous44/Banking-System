@@ -15,7 +15,7 @@
     <form id="accountForm" class="space-y-4">
       <input type="text" name="accountHolderName" placeholder="Name"
              class="w-full p-2 border border-gray-300 rounded" required>
-      <input type="number" name="balance" placeholder="Initial Balance"
+      <input type="number" name="balance" placeholder="Initial amount"
              class="w-full p-2 border border-gray-300 rounded" required>
       <button type="submit"
               class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Create</button>
@@ -42,6 +42,17 @@
     <div id="accountDetails" class="mt-4 text-sm text-gray-700"></div>
   </section>
 
+  <!-- Delete Account -->
+  <section class="mb-6 bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">Delete Account</h2>
+    <form id="deleteForm" class="space-y-4">
+      <input type="number" name="id" placeholder="Account ID"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <button type="submit"
+              class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
+    </form>
+  </section>
+
   <!-- Update Account -->
   <section class="mb-6 bg-white p-6 rounded shadow">
     <h2 class="text-xl font-semibold mb-4">Update Account</h2>
@@ -55,24 +66,13 @@
     </form>
   </section>
 
-  <!-- Delete Account -->
-  <section class="mb-6 bg-white p-6 rounded shadow">
-    <h2 class="text-xl font-semibold mb-4">Delete Account</h2>
-    <form id="deleteForm" class="space-y-4">
-      <input type="number" name="id" placeholder="Account ID"
-             class="w-full p-2 border border-gray-300 rounded" required>
-      <button type="submit"
-              class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
-    </form>
-  </section>
-
   <!-- Deposit -->
   <section class="mb-6 bg-white p-6 rounded shadow">
     <h2 class="text-xl font-semibold mb-4">Deposit</h2>
     <form id="depositForm" class="space-y-4">
       <input type="number" name="id" placeholder="Account ID"
              class="w-full p-2 border border-gray-300 rounded" required>
-      <input type="number" name="amount" placeholder="Amount to Deposit"
+      <input type="number" name="balance" placeholder="Amount to Deposit"
              class="w-full p-2 border border-gray-300 rounded" required>
       <button type="submit"
               class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">Deposit</button>
@@ -85,14 +85,13 @@
     <form id="withdrawForm" class="space-y-4">
       <input type="number" name="id" placeholder="Account ID"
              class="w-full p-2 border border-gray-300 rounded" required>
-      <input type="number" name="amount" placeholder="Amount to Withdraw"
+      <input type="number" name="balance" placeholder="Amount to Withdraw"
              class="w-full p-2 border border-gray-300 rounded" required>
       <button type="submit"
               class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Withdraw</button>
     </form>
   </section>
 </div>
-
 <script src="script.js"></script>
 </body>
 </html>
