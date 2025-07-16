@@ -2,25 +2,28 @@ const BASE_URL = '/api/bank';
 
 // Create account
 document.getElementById('accountForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = {
-        accountHolderName: form.accountHolderName.value,
-        balance: parseFloat(form.balance.value)
-    };
+     e.preventDefault();
+       const form = e.target;
+       const data = {
+           accountHolderName: form.accountHolderName.value,
+           balance: parseFloat(form.balance.value)
+       };
 
-    fetch(BASE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    })
-        .then(res => res.json())
-        .then(() => {
-            alert('Account created!');
-            form.reset();
-            getAccounts();
-        })
-        .catch(() => alert('Error creating account'));
+       fetch(BASE_URL, {
+           method: 'POST',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify(data)
+       })
+           .then(res => {
+               if (!res.ok) throw new Error();
+               return res.json();
+           })
+           .then(() => {
+               alert('Account created!');
+               form.reset();
+               getAccounts();
+           })
+           .catch(() => alert('Error creating account'));
 });
 
 // Get all accounts
