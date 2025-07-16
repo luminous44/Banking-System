@@ -16,4 +16,6 @@ public interface AccountService {
     ResponseEntity<?> depositAmount( Long id, Double amount);
 
     ResponseEntity<?> withdrawAmount(Long id, double amount);
+
+    ResponseEntity<?> updateUser(Long id, String name);
 }

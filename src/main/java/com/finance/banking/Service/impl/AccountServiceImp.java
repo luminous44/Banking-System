@@ -87,5 +87,19 @@ public  class AccountServiceImp implements AccountService {
         return ResponseEntity.ok("Amount withdrawal successfully.\nNew balance: " + updatedBalance);
     }
 
+    @Override
+    public ResponseEntity<?> updateUser(Long id, String name) {
+        Optional<Account> optionalAccount = accountRepository.findById(id);
+
+        if (optionalAccount.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Account not found with id: " + id);
+        }
+        Account acc = optionalAccount.get();
+        acc.setAccountHolderName(name);
+        accountRepository.save(acc);
+        return ResponseEntity.ok("Updated name successfully");
+    }
+
 
 }

@@ -31,6 +31,12 @@ public class AccountController {
         double amount = request.get("amount");
         return accountService.withdrawAmount(id, amount);
     }
+    @PutMapping("/{id}/update")
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody Map<String, String> request){
+        String name = request.get("name");
+        return accountService.updateUser(id, name);
+    }
+
     @GetMapping
     public ResponseEntity<?>  getAll(){
         return  accountService.getAllAccount();

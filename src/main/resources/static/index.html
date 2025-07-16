@@ -3,57 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <title>Banking Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800 p-6">
+<div class="max-w-4xl mx-auto">
+  <h1 class="text-3xl font-bold mb-6 text-blue-700 text-center">🏦 Banking System</h1>
 
-<h1>Banking System</h1>
+  <!-- Create Account -->
+  <section class="mb-6 bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">Create Account</h2>
+    <form id="accountForm" class="space-y-4">
+      <input type="text" name="accountHolderName" placeholder="Name"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <input type="number" name="balance" placeholder="Initial Balance"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <button type="submit"
+              class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Create</button>
+    </form>
+  </section>
 
-<h2>Create Account</h2>
-<form id="accountForm">
-  <input type="text" name="accountHolderName" placeholder="Name" required>
-  <input type="number" name="balance" placeholder="Initial Balance" required>
-  <button type="submit">Create Account</button>
-</form>
+  <!-- All Accounts -->
+  <section class="mb-6 bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">All Accounts</h2>
+    <button onclick="getAccounts()"
+            class="mb-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Load Accounts</button>
+    <ul id="accountList" class="list-disc list-inside space-y-1"></ul>
+  </section>
 
-<h2>All Accounts</h2>
-<button onclick="getAccounts()">Load Accounts</button>
-<ul id="accountList"></ul>
+  <!-- Get Account by ID -->
+  <section class="mb-6 bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">Get Account By ID</h2>
+    <form id="getByIdForm" class="space-y-4">
+      <input type="number" name="id" placeholder="Account ID"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <button type="submit"
+              class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Fetch</button>
+    </form>
+    <div id="accountDetails" class="mt-4 text-sm text-gray-700"></div>
+  </section>
 
-<h2>Get Account by ID</h2>
-<form id="getByIdForm">
-  <input type="number" name="id" placeholder="Account ID" required>
-  <button type="submit">Get Account</button>
-</form>
-<div id="accountDetails"></div>
+  <!-- Update Account -->
+  <section class="mb-6 bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">Update Account</h2>
+    <form id="updateForm" class="space-y-4">
+      <input type="number" name="id" placeholder="Account ID"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <input type="text" name="accountHolderName" placeholder="New Name"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <button type="submit"
+              class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700">Update</button>
+    </form>
+  </section>
 
-<h2>Update Account</h2>
-<form id="updateForm">
-  <input type="number" name="id" placeholder="Account ID" required>
-  <input type="text" name="accountHolderName" placeholder="New Name" required>
-  <input type="number" name="balance" placeholder="New Balance" required>
-  <button type="submit">Update Account</button>
-</form>
+  <!-- Delete Account -->
+  <section class="mb-6 bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">Delete Account</h2>
+    <form id="deleteForm" class="space-y-4">
+      <input type="number" name="id" placeholder="Account ID"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <button type="submit"
+              class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
+    </form>
+  </section>
 
-<h2>Delete Account</h2>
-<form id="deleteForm">
-  <input type="number" name="id" placeholder="Account ID" required>
-  <button type="submit">Delete Account</button>
-</form>
+  <!-- Deposit -->
+  <section class="mb-6 bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">Deposit</h2>
+    <form id="depositForm" class="space-y-4">
+      <input type="number" name="id" placeholder="Account ID"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <input type="number" name="amount" placeholder="Amount to Deposit"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <button type="submit"
+              class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">Deposit</button>
+    </form>
+  </section>
 
-<h2>Deposit</h2>
-<form id="depositForm">
-  <input type="number" name="id" placeholder="Account ID" required>
-  <input type="number" name="amount" placeholder="Amount to Deposit" required>
-  <button type="submit">Deposit</button>
-</form>
-
-<h2>Withdraw</h2>
-<form id="withdrawForm">
-  <input type="number" name="id" placeholder="Account ID" required>
-  <input type="number" name="amount" placeholder="Amount to Withdraw" required>
-  <button type="submit">Withdraw</button>
-</form>
+  <!-- Withdraw -->
+  <section class="mb-6 bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">Withdraw</h2>
+    <form id="withdrawForm" class="space-y-4">
+      <input type="number" name="id" placeholder="Account ID"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <input type="number" name="amount" placeholder="Amount to Withdraw"
+             class="w-full p-2 border border-gray-300 rounded" required>
+      <button type="submit"
+              class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Withdraw</button>
+    </form>
+  </section>
+</div>
 
 <script src="script.js"></script>
 </body>
