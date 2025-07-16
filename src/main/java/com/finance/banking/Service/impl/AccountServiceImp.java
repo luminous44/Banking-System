@@ -50,4 +50,42 @@ public  class AccountServiceImp implements AccountService {
         return  ResponseEntity.status(HttpStatus.NO_CONTENT).body("No Entry Available");
     }
 
+    @Override
+    public ResponseEntity<?> depositAmount(Long id, Double amount) {
+        Optional<Account> optionalAccount = accountRepository.findById(id);
+
+        if (optionalAccount.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Account not found with id: " + id);
+        }
+
+        Account account = optionalAccount.get();
+        double updatedBalance = account.getBalance() + amount;
+        account.setBalance(updatedBalance);
+        accountRepository.save(account);
+
+        return ResponseEntity.ok("Amount deposited successfully.\nNew balance: " + updatedBalance);
+    }
+
+    @Override
+    public ResponseEntity<?> withdrawAmount(Long id, double amount) {
+        Optional<Account> optionalAccount = accountRepository.findById(id);
+
+        if (optionalAccount.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Account not found with id: " + id);
+        }
+
+        Account account = optionalAccount.get();
+        if(account.getBalance() < amount){
+            return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
+                    .body("Insufficient withdrawal amount !! Try again");
+        }
+        double updatedBalance = account.getBalance() - amount;
+        account.setBalance(updatedBalance);
+        accountRepository.save(account);
+        return ResponseEntity.ok("Amount withdrawal successfully.\nNew balance: " + updatedBalance);
+    }
+
+
 }
