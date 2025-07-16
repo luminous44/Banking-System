@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/api/bank")
 public class AccountController {
@@ -18,11 +19,21 @@ public class AccountController {
         AccountDto createdAccount = accountService.createAccount(accountDto);
         return new ResponseEntity<>(createdAccount, HttpStatus.CREATED);
     }
+    @GetMapping
+    public ResponseEntity<?>  getAll(){
+        return  accountService.getAllAccount();
+
+    }
     @GetMapping("/{id}")
     public ResponseEntity<AccountDto> getAccountById(@PathVariable Long id){
         AccountDto account = accountService.getAccountById(id);
         return new ResponseEntity<>(account,HttpStatus.OK);
 
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteAccountById(@PathVariable Long id) {
+        return accountService.deleteAccountById(id);
+    }
+
 
 }
