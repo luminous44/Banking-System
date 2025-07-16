@@ -9,56 +9,49 @@
 
 <h1>Banking System</h1>
 
-<!-- Create Account -->
 <h2>Create Account</h2>
 <form id="accountForm">
   <input type="text" name="accountHolderName" placeholder="Name" required>
-  <input type="number" name="balance" placeholder="Balance" required>
-  <button type="submit">Create</button>
+  <input type="number" name="balance" placeholder="Initial Balance" required>
+  <button type="submit">Create Account</button>
 </form>
 
-<!-- Get All Accounts -->
 <h2>All Accounts</h2>
-<button onclick="getAccounts()">Refresh Accounts</button>
+<button onclick="getAccounts()">Load Accounts</button>
 <ul id="accountList"></ul>
 
-<!-- Get Account By ID -->
-<h2>Get Account By ID</h2>
+<h2>Get Account by ID</h2>
 <form id="getByIdForm">
   <input type="number" name="id" placeholder="Account ID" required>
-  <button type="submit">Fetch</button>
+  <button type="submit">Get Account</button>
 </form>
 <div id="accountDetails"></div>
 
-<!-- Update Account -->
 <h2>Update Account</h2>
 <form id="updateForm">
   <input type="number" name="id" placeholder="Account ID" required>
   <input type="text" name="accountHolderName" placeholder="New Name" required>
   <input type="number" name="balance" placeholder="New Balance" required>
-  <button type="submit">Update</button>
+  <button type="submit">Update Account</button>
 </form>
 
-<!-- Delete Account -->
 <h2>Delete Account</h2>
 <form id="deleteForm">
   <input type="number" name="id" placeholder="Account ID" required>
-  <button type="submit">Delete</button>
+  <button type="submit">Delete Account</button>
 </form>
 
-<!-- Deposit Amount -->
-<h2>Deposit Amount</h2>
+<h2>Deposit</h2>
 <form id="depositForm">
   <input type="number" name="id" placeholder="Account ID" required>
-  <input type="number" name="amount" placeholder="Amount to deposit" required>
+  <input type="number" name="amount" placeholder="Amount to Deposit" required>
   <button type="submit">Deposit</button>
 </form>
 
-<!-- Withdraw Amount -->
-<h2>Withdraw Amount</h2>
+<h2>Withdraw</h2>
 <form id="withdrawForm">
   <input type="number" name="id" placeholder="Account ID" required>
-  <input type="number" name="amount" placeholder="Amount to withdraw" required>
+  <input type="number" name="amount" placeholder="Amount to Withdraw" required>
   <button type="submit">Withdraw</button>
 </form>
 
