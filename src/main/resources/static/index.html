@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Banking Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Banking System</h1>
+
+<!-- Create Account -->
+<h2>Create Account</h2>
+<form id="accountForm">
+  <input type="text" name="accountHolderName" placeholder="Name" required>
+  <input type="number" name="balance" placeholder="Balance" required>
+  <button type="submit">Create</button>
+</form>
+
+<!-- Get All Accounts -->
+<h2>All Accounts</h2>
+<button onclick="getAccounts()">Refresh Accounts</button>
+<ul id="accountList"></ul>
+
+<!-- Get Account By ID -->
+<h2>Get Account By ID</h2>
+<form id="getByIdForm">
+  <input type="number" name="id" placeholder="Account ID" required>
+  <button type="submit">Fetch</button>
+</form>
+<div id="accountDetails"></div>
+
+<!-- Update Account -->
+<h2>Update Account</h2>
+<form id="updateForm">
+  <input type="number" name="id" placeholder="Account ID" required>
+  <input type="text" name="accountHolderName" placeholder="New Name" required>
+  <input type="number" name="balance" placeholder="New Balance" required>
+  <button type="submit">Update</button>
+</form>
+
+<!-- Delete Account -->
+<h2>Delete Account</h2>
+<form id="deleteForm">
+  <input type="number" name="id" placeholder="Account ID" required>
+  <button type="submit">Delete</button>
+</form>
+
+<!-- Deposit Amount -->
+<h2>Deposit Amount</h2>
+<form id="depositForm">
+  <input type="number" name="id" placeholder="Account ID" required>
+  <input type="number" name="amount" placeholder="Amount to deposit" required>
+  <button type="submit">Deposit</button>
+</form>
+
+<!-- Withdraw Amount -->
+<h2>Withdraw Amount</h2>
+<form id="withdrawForm">
+  <input type="number" name="id" placeholder="Account ID" required>
+  <input type="number" name="amount" placeholder="Amount to withdraw" required>
+  <button type="submit">Withdraw</button>
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>
